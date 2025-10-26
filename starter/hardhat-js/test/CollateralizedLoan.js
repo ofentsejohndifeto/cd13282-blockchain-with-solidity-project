@@ -134,7 +134,7 @@ describe("CollateralizedLoan", function () {
       await loanContract.connect(borrower).depositCollateralAndRequestLoan(interestRate, duration, { value: collateral });
       await loanContract.connect(lender).fundLoan(1, { value: collateral });
 
-      // Simulate time passing — move blockchain time forward
+      // Simulate time passing — move blockchain time forward, took forever :(
       // This allows the test to bypass the due date check in claimCollateral()
       await ethers.provider.send("evm_increaseTime", [duration + 10]); // 1 day + 10 seconds
       await ethers.provider.send("evm_mine"); // mine a block to apply the time change
